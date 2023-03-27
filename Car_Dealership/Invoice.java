@@ -1,5 +1,7 @@
 package Car_Dealership;
 
+import java.util.Scanner;
+        
 /**
  *
  * @author Alejandro GS
@@ -32,7 +34,38 @@ public class Invoice implements IInvoice {
     
     //-----Methods-----
     public void AddVehicule(){
-            
+        Scanner sc = new Scanner(System.in);
+        int opc = 0;
+        
+        System.out.println("-------------------------------------------");
+        System.out.println("Seleccione el vehiculo que desea agregar: ");
+        System.out.println("-------------------------------------------");
+        System.out.println("1. Vehículos de Propulsión Humana");
+        System.out.println("2. Vehículos Motorizados Terrestres");
+        System.out.println("3. Vehículos Aéreos");
+        opc = sc.nextInt();
+        
+        switch(opc){
+            case 1:
+                
+                break;
+            case 2:
+                System.out.println("-------------------------------------------");
+                System.out.println("El Vehículos Motorizados Terrestres es: ");
+                System.out.println("-------------------------------------------");
+                System.out.println("1. Nuevo");
+                System.out.println("2. Usado");
+                System.out.println("3. Salir");
+                
+                
+                break;
+            case 3:
+                
+                break;
+                
+            default:
+                break;
+        }
     }
             
     @Override
