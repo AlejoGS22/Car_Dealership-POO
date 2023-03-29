@@ -7,7 +7,7 @@ package Car_Dealership;
 interface IInvoice {
     
     //-----Abstract Methods-----
-    public double GetTotalAmount();
+    public void GetTotalAmount();
     
-    public double GetValueToPay();
+    public void GetValueToPay();
 }

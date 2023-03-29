@@ -6,31 +6,30 @@ package Car_Dealership;
  */
 public class CommercialAerialVehicule extends AerialVehicule {
     //-----Properties-----
-    private float discuont;
+    private float discuont;    
     
     //-----Constructor-----
     public CommercialAerialVehicule() {
         super();
         this.discuont = 0;
+        this.typeUse = "Comercial";               
     }
 
-    public CommercialAerialVehicule(float Discuont, boolean hasPermissionCA, String registrationCertificate, String typeUse, String brand, int model, String reference) {
-        super(hasPermissionCA, registrationCertificate, typeUse, brand, model, reference);
+    public CommercialAerialVehicule(float Discuont, boolean hasPermissionCA, String registrationCertificate, String typeUse, String brand, int model, String reference, float price) {
+        super(hasPermissionCA, registrationCertificate, typeUse, brand, model, reference, price);
         this.discuont = Discuont;
     }
     
     //-----Methods-----       
     @Override
-    public float CalculateFinalPrice(float unitPrice) {
+    public float CalculateFinalPrice() {
         float finalPrice = 0;
         
-        if(this.model < 2020){
-            if(this.model < 2016 ){
-                if(this.model < 2010){
-                    this.discuont = 0;
-                    System.out.println("--------------------------------");
-                    System.out.println("Vehículo no apto para la venta");
-                    System.out.println("--------------------------------");
+        if(getModel() < 2020){
+            if(getModel() < 2016 ){
+                if(getModel() < 2010){
+                    this.discuont = 0;                                        
+                    observation = "Vehículo no apto para la venta";                    
                 }else{
                     this.discuont = 10;
                 }
@@ -38,22 +37,22 @@ public class CommercialAerialVehicule extends AerialVehicule {
                 this.discuont = 5;
             }
         }else{
-            this.discuont = 0;
-            System.out.println("----------------------");
-            System.out.println("Vehículo sin descuento");
-            System.out.println("----------------------");
+            this.discuont = 0;            
+            observation = "Vehículo sin descuento";
+            
         }
         
-        finalPrice = unitPrice * (( 100 - this.discuont ) / 100);
+        finalPrice = getPrice() * (( 100 - this.discuont ) / 100);
         
         return finalPrice; 
     }
 
     @Override
     public String ToString() {
-        return "CommercialAerialVehicule{\n" +
-                super.ToString() + 
-                ",\nDiscuont= " + discuont + '}';
+        return "CommercialAerialVehicule" +
+                "\n---------------------------------------" +
+                "\n" + super.ToString() + 
+                "\nDiscuont= " + discuont + " %";
     }        
     
     //-----Getters and Setters-----

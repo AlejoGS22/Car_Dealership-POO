@@ -14,15 +14,15 @@ public class UsedMotorizedLandVehicle extends MotorizedLandVehicle {
         this.mileAge = null;
     }
 
-    public UsedMotorizedLandVehicle(float mileAge, float carTax, String carType, String plate, String tractionType, String brand, int model, String reference) {
-        super(carTax, carType, plate, tractionType, brand, model, reference);
+    public UsedMotorizedLandVehicle(float mileAge, float carTax, String carType, String plate, String tractionType, String brand, int model, String reference, float price) {
+        super(carTax, carType, plate, tractionType, brand, model, reference, price);
         this.mileAge = mileAge;
     }
     
     //-----Methods-----       
     @Override
-    public float CalculateFinalPrice(float unitPrice) {
-        float newUnitPrice = super.CalculateFinalPrice(unitPrice);
+    public float CalculateFinalPrice() {
+        float newUnitPrice = super.CalculateFinalPrice();
         float finalPrice = 0;
         float discountFraction = 0;
         
@@ -43,9 +43,32 @@ public class UsedMotorizedLandVehicle extends MotorizedLandVehicle {
     
     @Override
     public String ToString() {
-        return "UsedMotorizedLandVehicle{\n" + 
-                super.ToString() + 
-                ",\nmileAge= " + mileAge + '}';
+        return  "UsedMotorizedLandVehicle" +
+                "\n---------------------------------------" +
+                "\n" + super.ToString() + 
+                "\nmileAge= " + mileAge + " KM";
+    }
+    
+    @Override
+    public void requestsInformation(){
+        boolean flag = false;
+        
+        super.requestsInformation();
+        
+        do{            
+            try{                
+                System.out.println("Ingrese el kilometraje del vehiculo ");
+                this.mileAge = sc.nextFloat();
+                
+                flag = true;
+            }catch(Exception e){
+                System.out.println("----------------------");
+                System.err.println("Tipo de dato no valido");
+                System.out.println("----------------------");
+                sc.nextLine();
+            }
+            
+        }while(flag != true);
     }
 
     //-----Getters and Setters-----

@@ -10,27 +10,28 @@ public class HumanPoweredVehicule extends Vehicle{
         
     //-----Constructor-----
     public HumanPoweredVehicule(){
-        super("N/A", 0, "N/A");
-        this.environmetalSubside = 0;
+        super("N/A", 0, "N/A", 0);
+        this.environmetalSubside = 25;
     }
 
-    public HumanPoweredVehicule(float environmetalSubside, String brand, int model, String reference) {
-        super(brand, model, reference);
+    public HumanPoweredVehicule(float environmetalSubside, String brand, int model, String reference, float price) {
+        super(brand, model, reference, price);
         this.environmetalSubside = environmetalSubside;
     }    
     
     //-----Methods-----
     @Override
-    public float CalculateFinalPrice(float unitPrice){        
-        float finalPrice = unitPrice * (( 100 - this.environmetalSubside ) / 100) ;        
+    public float CalculateFinalPrice(){        
+        float finalPrice = getPrice() * (( 100 - this.environmetalSubside ) / 100) ;        
         return finalPrice;
     }
 
     @Override
     public String ToString() {        
-        return "HumanPoweredVehicule{ \n" + 
-                super.ToString() + 
-                ",\nEnvironmetalSubside= " + environmetalSubside + '}';
+        return  "HumanPoweredVehicule" +
+                "\n---------------------------------------" +
+                "\n" + super.ToString() + 
+                "\nEnvironmetalSubside= " + environmetalSubside + "%";
     }
             
     //-----Getters and Setters-----
